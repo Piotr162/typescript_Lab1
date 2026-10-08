@@ -1,22 +1,21 @@
 import { sum } from "./sum.ts";
 
+function isNumber(value: unknown): value is number {
+    return typeof value === "number" && !Number.isNaN(value);
+}
+
 export class Calculator {
     private readonly values: number[];
     private readonly rejected: unknown[];
 
     constructor(input: unknown[])
     {
-        this.values =[];
-        this.rejected =[];
-        input.forEach(element => {
-            if(typeof element === "number" && !Number.isNaN(element))
-                this.values.push(element)
-            else
-            {
-                this.rejected.push(element)
-                console.log(`Argument is not a number `,element)
-            }
-        });
+        this.values = input.filter(isNumber);
+        this.rejected = input.filter(element => !isNumber(element));
+
+        if (this.rejected.length > 0) {
+            console.log("Odrzucone elementy:", this.rejected);
+        }
     }
 
     add(): number{
