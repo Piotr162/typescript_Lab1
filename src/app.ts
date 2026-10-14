@@ -9,3 +9,6 @@ const calc = new Calculator([2, 'seven', 4, null, 8]);
 
 console.log(calc.add());
 console.log(calc.multiply());
+console.log(calc.min());
+console.log(calc.max());
+console.log(calc.mean());
