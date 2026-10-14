@@ -39,4 +39,23 @@ export class Calculator {
             }
         return this.values.reduce((acc,cur) => acc / cur)
     }
+    min(): number {
+        if (this.values.length === 0) return 0;
+        return Math.min(...this.values);
+    }
+
+    max(): number {
+        if (this.values.length === 0) return 0;
+        return Math.max(...this.values);
+    }
+
+    mean(): number {
+        if (this.values.length === 0) return 0;
+        let total = 0;
+        this.values.forEach(element => {
+            total += element;
+        });
+        return total / this.values.length;
+    }
+    
 }
